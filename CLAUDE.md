@@ -139,19 +139,9 @@ When the user asks for generated output (reports, comparisons, summaries):
 3. Include wikilinks back to source wiki articles
 4. Offer to "file" valuable outputs back into the wiki as new articles
 
-## Health Check / Linting Protocol
+## Health Check / Linting
 
-When the user asks for a health check, or periodically during large ingestion sessions:
-
-1. **Orphan detection**: Find wiki articles not listed in `_index/catalog.md` or not linked from any other article
-2. **Broken links**: Find `[[wikilinks]]` that point to non-existent articles — these are candidates for new articles
-3. **Missing summaries**: Find articles with empty or missing `summary` in frontmatter
-4. **Tag consistency**: Ensure every tag used in article frontmatter has a corresponding `_index/tags/<tag>.md` file, and vice versa
-5. **Stale index entries**: Find catalog/graph entries pointing to deleted articles
-6. **Bidirectional graph check**: Ensure every relationship in `graph.md` has a corresponding reverse entry
-7. **Suggest connections**: Look for articles that likely relate but aren't linked, and suggest new edges
-
-Report findings as a checklist and offer to fix issues automatically.
+Use the `/project:healthcheck` skill to lint the wiki. It checks for orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, graph integrity, stale source references, and suggests new connections. Pass `--fix` to auto-resolve errors and warnings.
 
 ## General Principles
 

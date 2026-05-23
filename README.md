@@ -54,7 +54,7 @@ All operations are performed by talking to Claude Code inside the vault director
 - **Ingest content**: `/project:ingest <url, file path, or pasted text>` — saves the raw source, compiles wiki articles, and updates all indices
 - **Ask questions**: Ask Claude anything about your knowledge base. It reads the indices, pulls up relevant articles, and synthesizes an answer with citations.
 - **Generate output**: Ask Claude to produce reports, comparisons, or summaries. Outputs are saved to `output/` and can be filed back into the wiki.
-- **Health check**: Ask Claude to lint the wiki — it will find orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggest new connections.
+- **Health check**: `/project:healthcheck` — finds orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggests new connections. Use `/project:healthcheck --fix` to auto-resolve issues.
 - **Browse**: Open the vault in Obsidian to explore the wiki visually, follow wikilinks, and use the graph view to see concept relationships.
 
 ## License
