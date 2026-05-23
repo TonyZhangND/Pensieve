@@ -9,10 +9,12 @@ Read `_index/catalog.md`, `_index/graph.md`, and `_index/sources.md` to understa
 ## Step 2: Save Raw Content
 
 Save the raw material to the appropriate `raw/` subdirectory:
-- **Web articles**: Fetch the content, convert to markdown, save to `raw/articles/<slug>.md`. Download any referenced images to `raw/images/` and update image paths.
-- **PDFs/papers**: Save to `raw/papers/`. Create a companion `raw/papers/<slug>-notes.md` with extracted key points if useful.
+- **Web articles**: Fetch the content, convert to markdown, save to `raw/articles/<slug>.md`. Download any referenced images to `raw/images/` and update image paths. Also save a PDF snapshot of the webpage to `raw/articles/<slug>.pdf` using a headless browser (e.g., `chromium --headless --print-to-pdf`).
+- **PDFs/papers**: Download the PDF to `raw/papers/<slug>.pdf`. For sources like arxiv, download the actual paper PDF (e.g., `https://arxiv.org/pdf/<id>`). Also create a companion `raw/papers/<slug>.md` with extracted key points in markdown.
 - **Repo links**: Save relevant excerpts (README, architecture, key source files) to `raw/repos/<slug>.md`.
 - **Personal notes / pasted text**: Save to `raw/notes/<slug>.md`.
+
+If the content doesn't fit any existing `raw/` subdirectory, propose a new one to the user (e.g., `raw/videos/`, `raw/datasets/`, `raw/transcripts/`). Only create the new subdirectory after the user approves.
 
 Use descriptive kebab-case filenames.
 
