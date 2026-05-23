@@ -15,6 +15,7 @@ pensieve/
 │   └── images/         # Downloaded images referenced by raw sources
 ├── wiki/               # Compiled knowledge base (flat directory, graph-connected)
 ├── _index/             # Index system for navigation
+│   ├── meta.md         # Meta-index: tag overview with article counts
 │   ├── catalog.md      # Master catalog of all wiki articles
 │   ├── graph.md        # Concept relationship graph (adjacency list)
 │   ├── sources.md      # Catalog of all raw ingested sources
@@ -24,13 +25,14 @@ pensieve/
 
 ## Starting a Session
 
-1. **Always read `_index/catalog.md` first.** This gives you a one-line summary of every wiki article.
-2. **Read `_index/graph.md`** to understand how concepts relate to each other.
-3. **Read `_index/sources.md`** if you need to find or reference raw ingested content.
-4. If the user's request is scoped to a topic, **read the relevant tag index** from `_index/tags/` to narrow your focus.
-5. Only then read the specific wiki articles you need.
+1. **Always read `_index/meta.md` first.** This gives you vault size, all tags with article counts, and brief descriptions of each tag's scope.
+2. If the user's request is scoped to a topic, **read the relevant `_index/tags/<tag>.md`** files identified from the meta-index.
+3. If the query is broad or you need the full picture, **read `_index/catalog.md`** for one-line summaries of every article.
+4. **Read `_index/graph.md`** to understand how concepts relate and to traverse connections.
+5. **Read `_index/sources.md`** if you need to find or reference raw ingested content.
+6. Only then read the specific wiki articles you need.
 
-This avoids reading the entire wiki on every session. The index system is your table of contents.
+This avoids reading the entire wiki on every session. The meta-index is your entry point — use it to decide which deeper indices to read.
 
 ## Ingestion
 
@@ -76,6 +78,22 @@ Bulleted or structured breakdown of the concept.
 - **No orphans**: Every article must link to at least one other article and be linked from at least one other.
 
 ## Index File Formats
+
+### `_index/meta.md`
+
+```markdown
+# Meta Index
+
+> Auto-maintained by Claude. Do not edit manually.
+> Last updated: YYYY-MM-DD
+> Total articles: N | Total sources: N | Total tags: N
+
+## Tags
+
+- **tag-name** (count) — one-line description of what this tag covers
+```
+
+One line per tag. Include article count and a brief description. Update the totals header whenever articles, sources, or tags change.
 
 ### `_index/catalog.md`
 

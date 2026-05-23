@@ -4,7 +4,7 @@ Ingest raw source material into the Pensieve knowledge base. The user will provi
 
 ## Step 1: Read Current State
 
-Read `_index/catalog.md`, `_index/graph.md`, and `_index/sources.md` to understand what already exists in the wiki and what raw content has been ingested.
+Read `_index/meta.md`, `_index/catalog.md`, `_index/graph.md`, and `_index/sources.md` to understand what already exists in the wiki and what raw content has been ingested.
 
 ## Step 2: Check for Duplicates
 
@@ -104,6 +104,9 @@ For every tag used, ensure a `_index/tags/<tag>.md` file exists with the article
 
 - [[slug]] — One-line summary
 ```
+
+### meta.md
+Update the totals header (article count, source count, tag count). Update tag entries — adjust counts, add new tags with descriptions, or remove tags that no longer have any articles.
 
 ## Step 7: Summary
 

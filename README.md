@@ -32,6 +32,7 @@ pensieve/
 │   └── images/         # Downloaded images
 ├── wiki/               # Compiled knowledge base (flat, graph-connected)
 ├── _index/             # Index system for Claude navigation
+│   ├── meta.md         # Meta-index: tag overview with article counts
 │   ├── catalog.md      # Master catalog of all wiki articles
 │   ├── graph.md        # Concept relationship graph
 │   ├── sources.md      # Registry of all raw ingested sources
@@ -43,6 +44,7 @@ pensieve/
 
 - **Graph over tree**: Articles connect laterally via wikilinks and tags, not through folder hierarchy
 - **Bidirectional source tracking**: Every wiki article lists the raw sources it was compiled from (in frontmatter and a Sources section). Conversely, `_index/sources.md` maps every raw source to the wiki articles it fed into. You can traverse in either direction — from a concept to its evidence, or from a source to every concept it contributed to.
+- **Tiered indexing**: A lightweight meta-index summarizes all tags with article counts, so Claude can decide which tag indices to drill into without reading the full catalog. This keeps navigation efficient as the wiki scales to hundreds of articles.
 - **Index-first navigation**: Claude reads compact index files to find what it needs, rather than scanning the entire wiki
 - **Incremental compilation**: Each ingestion enriches the existing wiki — articles are updated, not rebuilt
 - **LLM-maintained**: You rarely edit the wiki directly. Claude writes, organizes, and cross-links everything

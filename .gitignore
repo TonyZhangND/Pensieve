@@ -11,6 +11,7 @@ wiki/*
 # Index content (auto-maintained by Claude)
 _index/catalog.md
 _index/graph.md
+_index/meta.md
 _index/sources.md
 _index/tags/*
 

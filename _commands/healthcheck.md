@@ -4,7 +4,7 @@ Run a health check on the Pensieve knowledge base. Identify issues and optionall
 
 ## Step 1: Read All Indices
 
-Read `_index/catalog.md`, `_index/graph.md`, `_index/sources.md`, and all files in `_index/tags/`.
+Read `_index/meta.md`, `_index/catalog.md`, `_index/graph.md`, `_index/sources.md`, and all files in `_index/tags/`.
 
 ## Step 2: Scan Wiki and Raw Directories
 
@@ -39,6 +39,11 @@ Entries in `catalog.md`, `graph.md`, or `sources.md` that point to files that no
 - Raw files in `raw/` not listed in `_index/sources.md`
 - Source entries in `sources.md` pointing to deleted raw files
 - Wiki articles whose `sources` frontmatter references raw files that don't exist
+
+### Meta-index consistency
+- Article count in `meta.md` doesn't match actual number of files in `wiki/`
+- Tag counts in `meta.md` don't match actual number of articles in each `_index/tags/<tag>.md`
+- Tags listed in `meta.md` that have no corresponding tag file, or vice versa
 
 ### Suggested connections
 Look for wiki articles that likely relate but aren't linked — based on shared tags, overlapping content in summaries, or common sources.

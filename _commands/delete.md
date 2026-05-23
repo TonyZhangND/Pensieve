@@ -31,6 +31,9 @@ Remove the article from the `→` target list of any source entries in `_index/s
 - Remove the article's entry from every tag file in `_index/tags/`
 - If a tag file becomes empty (no articles left), delete the tag file
 
+### meta.md
+Update the totals header (decrement article count, adjust tag count if tags were removed). Update tag entries — decrement counts, remove tags that no longer have any articles.
+
 ## Step 4: Remove Wikilinks from Other Wiki Articles
 
 Search all remaining files in `wiki/` for `[[slug]]` or `[[slug|...]]` wikilinks pointing to the deleted article. For each occurrence:
