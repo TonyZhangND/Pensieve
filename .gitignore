@@ -11,6 +11,7 @@ wiki/*
 # Index content (auto-maintained by Claude)
 _index/catalog.md
 _index/graph.md
+_index/sources.md
 _index/tags/*
 
 # Generated outputs
@@ -21,6 +22,9 @@ output/*
 
 # Obsidian local config
 .obsidian/
+
+# Claude local config
+.claude/
 
 # OS
 .DS_Store

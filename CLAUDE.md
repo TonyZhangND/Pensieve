@@ -17,6 +17,7 @@ pensieve/
 ├── _index/             # Index system for navigation
 │   ├── catalog.md      # Master catalog of all wiki articles
 │   ├── graph.md        # Concept relationship graph (adjacency list)
+│   ├── sources.md      # Catalog of all raw ingested sources
 │   └── tags/           # Per-tag article listings
 └── output/             # Generated outputs (reports, slides, charts)
 ```
@@ -25,38 +26,15 @@ pensieve/
 
 1. **Always read `_index/catalog.md` first.** This gives you a one-line summary of every wiki article.
 2. **Read `_index/graph.md`** to understand how concepts relate to each other.
-3. If the user's request is scoped to a topic, **read the relevant tag index** from `_index/tags/` to narrow your focus.
-4. Only then read the specific wiki articles you need.
+3. **Read `_index/sources.md`** if you need to find or reference raw ingested content.
+4. If the user's request is scoped to a topic, **read the relevant tag index** from `_index/tags/` to narrow your focus.
+5. Only then read the specific wiki articles you need.
 
 This avoids reading the entire wiki on every session. The index system is your table of contents.
 
-## Ingestion Protocol
+## Ingestion
 
-When the user provides raw content (a URL, pasted text, a file, a PDF, a repo link, or a personal note):
-
-### Step 1: Save Raw Content
-- Save the raw material to the appropriate `raw/` subdirectory
-- Use descriptive kebab-case filenames: `raw/articles/attention-is-all-you-need.md`
-- For web articles: save as markdown, download related images to `raw/images/` and update image references
-- For PDFs: save the file directly; optionally create a companion `.md` with extracted key points
-- For repos: save relevant excerpts (README, key source files, architecture notes)
-- For personal notes: save as-is to `raw/notes/`
-
-### Step 2: Identify Concepts
-- Analyze the raw content and identify the key concepts it covers
-- Check `_index/catalog.md` to see which concepts already have wiki articles
-- Decide: create new articles or update existing ones
-
-### Step 3: Create or Update Wiki Articles
-- For each concept, create or update a wiki article in `wiki/`
-- Follow the article format specified below
-- Add `[[wikilinks]]` to connect to related existing concepts
-- Reference the raw source in the article's frontmatter and Sources section
-
-### Step 4: Update All Indices
-- **`_index/catalog.md`**: Add/update the one-line entry for each article touched
-- **`_index/graph.md`**: Add/update relationship entries for each article touched
-- **`_index/tags/<tag>.md`**: Add/update entries in every relevant tag index; create new tag files as needed
+Use the `/project:ingest` skill to ingest raw content. It handles the full pipeline: saving raw files, identifying concepts, creating/updating wiki articles, and updating all indices.
 
 **Critical: Never skip index updates.** The indices are how future sessions navigate the vault. An article without an index entry is invisible.
 
