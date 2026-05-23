@@ -139,6 +139,10 @@ When the user asks for generated output (reports, comparisons, summaries):
 3. Include wikilinks back to source wiki articles
 4. Offer to "file" valuable outputs back into the wiki as new articles
 
+## Deletion
+
+Use the `/delete` skill to remove a wiki article. It handles the full cleanup: deleting the file, removing entries from catalog, graph, sources, and tag indices, removing wikilinks from other articles, and deleting empty tag files.
+
 ## Health Check / Linting
 
 Use the `/healthcheck` skill to lint the wiki. It checks for orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, graph integrity, stale source references, and suggests new connections. Pass `--fix` to auto-resolve errors and warnings.
