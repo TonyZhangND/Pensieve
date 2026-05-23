@@ -6,7 +6,21 @@ Ingest raw source material into the Pensieve knowledge base. The user will provi
 
 Read `_index/catalog.md`, `_index/graph.md`, and `_index/sources.md` to understand what already exists in the wiki and what raw content has been ingested.
 
-## Step 2: Save Raw Content
+## Step 2: Check for Duplicates
+
+Before saving anything, check `_index/sources.md` for existing entries that match the input:
+- **URL match**: Does the URL (or a variant like arxiv abs vs. pdf) already appear?
+- **Title match**: Does the title closely match an existing source?
+- **Slug match**: Would the generated filename collide with an existing file in `raw/`?
+
+If a match is found, inform the user and offer options:
+- **Skip**: Don't ingest, the source already exists
+- **Update**: Re-ingest the source, updating the raw files and enriching existing wiki articles with any new content
+- **Ingest as new**: The user considers this a distinct source despite the similarity (e.g., a v2 of a paper)
+
+Only proceed to Step 3 after the user confirms.
+
+## Step 3: Save Raw Content
 
 Save the raw material to the appropriate `raw/` subdirectory:
 - **Web articles**: Fetch the content, convert to markdown, save to `raw/articles/<slug>.md`. Download any referenced images to `raw/images/` and update image paths. Also save a PDF snapshot of the webpage to `raw/articles/<slug>.pdf` using a headless browser (e.g., `chromium --headless --print-to-pdf`).
@@ -18,7 +32,7 @@ If the content doesn't fit any existing `raw/` subdirectory, propose a new one t
 
 Use descriptive kebab-case filenames.
 
-## Step 3: Identify Concepts
+## Step 4: Identify Concepts
 
 Analyze the raw content and identify the distinct concepts it covers. For each concept:
 - Check `_index/catalog.md` — does a wiki article already exist?
@@ -27,7 +41,7 @@ Analyze the raw content and identify the distinct concepts it covers. For each c
 
 Present the list of concepts to the user before proceeding: "I identified these concepts: X, Y, Z. I'll create new articles for X and Y, and update the existing article for Z. Sound right?"
 
-## Step 4: Create or Update Wiki Articles
+## Step 5: Create or Update Wiki Articles
 
 For each concept, write or update a wiki article in `wiki/`:
 
@@ -57,7 +71,7 @@ Guidelines:
 - When updating an existing article, add the new source to `sources` in frontmatter, update the `updated` date, and weave in the new information.
 - Reuse existing tags from `_index/tags/` when possible.
 
-## Step 5: Update All Indices
+## Step 6: Update All Indices
 
 This step is mandatory — never skip it.
 
@@ -91,7 +105,7 @@ For every tag used, ensure a `_index/tags/<tag>.md` file exists with the article
 - [[slug]] — One-line summary
 ```
 
-## Step 6: Summary
+## Step 7: Summary
 
 Report what was done:
 - Raw files saved
