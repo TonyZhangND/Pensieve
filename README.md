@@ -4,7 +4,7 @@ An LLM-powered personal knowledge base, inspired by [Karpathy's approach](https:
 
 ## How It Works
 
-1. **Ingest** raw material (articles, papers, repos, notes) using the `/project:ingest` command in Claude Code
+1. **Ingest** raw material (articles, papers, repos, notes) using the `/ingest` command in Claude Code
 2. Claude saves the raw content, identifies concepts, and **compiles** wiki articles with `[[wikilinks]]` connecting them into a knowledge graph
 3. Claude auto-maintains **index files** (catalog, concept graph, source registry, tag indices) so future sessions can efficiently navigate the vault
 4. **Query** the knowledge base by asking Claude questions — it reads the indices, finds relevant articles, and synthesizes answers
@@ -15,7 +15,7 @@ An LLM-powered personal knowledge base, inspired by [Karpathy's approach](https:
 1. Clone this repo
 2. Open the folder as an Obsidian vault
 3. Open a Claude Code session in the same directory
-4. Start ingesting: `/project:ingest <url, file, or paste content>`
+4. Start ingesting: `/ingest <url, file, or paste content>`
 
 ## Vault Structure
 
@@ -51,10 +51,10 @@ pensieve/
 
 All operations are performed by talking to Claude Code inside the vault directory.
 
-- **Ingest content**: `/project:ingest <url, file path, or pasted text>` — saves the raw source, compiles wiki articles, and updates all indices
+- **Ingest content**: `/ingest <url, file path, or pasted text>` — saves the raw source, compiles wiki articles, and updates all indices
 - **Ask questions**: Ask Claude anything about your knowledge base. It reads the indices, pulls up relevant articles, and synthesizes an answer with citations.
 - **Generate output**: Ask Claude to produce reports, comparisons, or summaries. Outputs are saved to `output/` and can be filed back into the wiki.
-- **Health check**: `/project:healthcheck` — finds orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggests new connections. Use `/project:healthcheck --fix` to auto-resolve issues.
+- **Health check**: `/healthcheck` — finds orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggests new connections. Use `/healthcheck --fix` to auto-resolve issues.
 - **Browse**: Open the vault in Obsidian to explore the wiki visually, follow wikilinks, and use the graph view to see concept relationships.
 
 ## License

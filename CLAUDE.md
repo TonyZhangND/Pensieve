@@ -34,7 +34,7 @@ This avoids reading the entire wiki on every session. The index system is your t
 
 ## Ingestion
 
-Use the `/project:ingest` skill to ingest raw content. It handles the full pipeline: saving raw files, identifying concepts, creating/updating wiki articles, and updating all indices.
+Use the `/ingest` skill to ingest raw content. It handles the full pipeline: saving raw files, identifying concepts, creating/updating wiki articles, and updating all indices.
 
 **Critical: Never skip index updates.** The indices are how future sessions navigate the vault. An article without an index entry is invisible.
 
@@ -141,7 +141,7 @@ When the user asks for generated output (reports, comparisons, summaries):
 
 ## Health Check / Linting
 
-Use the `/project:healthcheck` skill to lint the wiki. It checks for orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, graph integrity, stale source references, and suggests new connections. Pass `--fix` to auto-resolve errors and warnings.
+Use the `/healthcheck` skill to lint the wiki. It checks for orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, graph integrity, stale source references, and suggests new connections. Pass `--fix` to auto-resolve errors and warnings.
 
 ## General Principles
 
