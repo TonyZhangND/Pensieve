@@ -28,6 +28,9 @@ output/*
 # Claude local config
 .claude/
 
+# Python env
+.venv/
+
 # Secrets
 .env
 
