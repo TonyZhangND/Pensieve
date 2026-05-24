@@ -30,7 +30,7 @@ pensieve/
 2. If the user's request is scoped to a topic, **read the relevant `_index/tags/<tag>.md`** files identified from the meta-index.
 3. If the query is broad or you need the full picture, **read `_index/catalog.md`** for one-line summaries of every article.
 4. **Read `_index/graph.md`** to understand how concepts relate and to traverse connections.
-5. **Read `_index/sources.md`** if you need to find or reference raw ingested content.
+5. **Read `_index/sources.md`** to find raw ingested sources by topic (has inline tags, like catalog.md).
 6. Only then read the specific wiki articles you need.
 
 This avoids reading the entire wiki on every session. The meta-index is your entry point — use it to decide which deeper indices to read.
@@ -124,6 +124,19 @@ One line per article. Keep sorted alphabetically. Include all tags inline for sc
 
 One section per article. Each bullet describes *how* the two concepts relate. Relationships are bidirectional — if A lists B, B should list A.
 
+### `_index/sources.md`
+
+```markdown
+# Sources
+
+> Auto-maintained by Claude. Do not edit manually.
+> Last updated: YYYY-MM-DD
+
+- [[raw/path/to/file.md|Display Title]] — one-line description (type: article|paper|repo|note) → [[wiki-slug]] #tag1 #tag2
+```
+
+One line per raw source, sorted alphabetically. Include inline tags (union of tags from all wiki articles it fed into) for direct source retrieval by topic. The `→` arrow lists which wiki articles this source contributed to.
+
 ### `_index/tags/<tag>.md`
 
 ```markdown
@@ -138,7 +151,15 @@ One file per tag. Lists all articles carrying that tag.
 
 ## Q&A Protocol
 
-When the user asks a question about the knowledge base:
+Queries fall into two categories — handle them differently:
+
+### "What did I read about X?" (source retrieval)
+
+1. Read `_index/sources.md` — scan inline tags and descriptions to find matching sources
+2. Return the matching raw sources with their descriptions and wiki article links
+3. If the user wants the full content, read the raw file directly
+
+### "What do I know about X?" (knowledge synthesis)
 
 1. Read `_index/catalog.md` to identify relevant articles
 2. If needed, read `_index/graph.md` to find related concepts the question might touch

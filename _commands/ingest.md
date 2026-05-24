@@ -91,9 +91,9 @@ Add or update relationship entries for every article created or modified. Ensure
 ### sources.md
 Add an entry for every raw file saved. One line per source, sorted alphabetically:
 ```
-- [[raw/path/to/file.md|Display Title]] — one-line description (type: article|paper|repo|note) → [[wiki-slug]], [[wiki-slug-2]]
+- [[raw/path/to/file.md|Display Title]] — one-line description (type: article|paper|repo|note) → [[wiki-slug]], [[wiki-slug-2]] #tag1 #tag2
 ```
-The `→` arrow lists which wiki articles this source fed into.
+The `→` arrow lists which wiki articles this source fed into. Include inline tags (union of tags from all wiki articles this source fed into) for direct source retrieval by topic.
 
 ### tags/*.md
 For every tag used, ensure a `_index/tags/<tag>.md` file exists with the article listed. Create new tag files as needed:

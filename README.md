@@ -44,8 +44,9 @@ pensieve/
 
 ## Key Ideas
 
+- **Two query modes**: "What did I read about X?" searches the source index directly — every raw source is tagged and summarized for fast retrieval. "What do I know about X?" synthesizes across wiki articles, following the concept graph to build a cross-referenced answer. Sources and wiki serve different needs; the index system supports both as first-class use cases.
 - **Graph over tree**: Articles connect laterally via wikilinks and tags, not through folder hierarchy
-- **Bidirectional source tracking**: Every wiki article lists the raw sources it was compiled from (in frontmatter and a Sources section). Conversely, `_index/sources.md` maps every raw source to the wiki articles it fed into. You can traverse in either direction — from a concept to its evidence, or from a source to every concept it contributed to.
+- **Bidirectional source tracking**: Every wiki article lists the raw sources it was compiled from (in frontmatter and a Sources section). Conversely, `_index/sources.md` maps every raw source to the wiki articles it fed into, with inline tags for direct topic search. You can traverse in either direction — from a concept to its evidence, or from a source to every concept it contributed to.
 - **Tiered indexing**: A lightweight meta-index summarizes all tags with article counts, so Claude can decide which tag indices to drill into without reading the full catalog. This keeps navigation efficient as the wiki scales to hundreds of articles.
 - **Index-first navigation**: Claude reads compact index files to find what it needs, rather than scanning the entire wiki
 - **Incremental compilation**: Each ingestion enriches the existing wiki — articles are updated, not rebuilt
@@ -56,7 +57,8 @@ pensieve/
 All operations are performed by talking to Claude Code inside the vault directory.
 
 - **Ingest content**: `/ingest <url, file path, or pasted text>` — saves the raw source, compiles wiki articles, and updates all indices
-- **Ask questions**: Ask Claude anything about your knowledge base. It reads the indices, pulls up relevant articles, and synthesizes an answer with citations.
+- **Find sources**: Ask "what did I read about X?" — Claude searches the source index by topic and returns matching raw sources with descriptions. No wiki hop needed.
+- **Synthesize knowledge**: Ask "what do I know about X?" — Claude reads wiki articles, follows the concept graph, and synthesizes an answer with citations across multiple sources.
 - **Generate output**: Ask Claude to produce reports, comparisons, or summaries. Outputs are saved to `output/` and can be filed back into the wiki.
 - **Offline queue**: Capture content on the go via Telegram (with more integrations like email coming). Items queue in `raw/inbox/` and are batch-ingested when you run `/process-inbox`. See [tools/README.md](tools/README.md) for setup.
 - **Health check**: `/healthcheck` — finds orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggests new connections. Use `/healthcheck --fix` to auto-resolve issues.

@@ -39,6 +39,7 @@ Entries in `catalog.md`, `graph.md`, or `sources.md` that point to files that no
 - Raw files in `raw/` not listed in `_index/sources.md`
 - Source entries in `sources.md` pointing to deleted raw files
 - Wiki articles whose `sources` frontmatter references raw files that don't exist
+- Source entries in `sources.md` missing inline tags, or whose tags don't match the union of tags from the wiki articles they feed into
 
 ### Meta-index consistency
 - Article count in `meta.md` doesn't match actual number of files in `wiki/`
