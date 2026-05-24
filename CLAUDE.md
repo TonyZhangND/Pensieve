@@ -8,6 +8,7 @@ You are operating an Obsidian vault that serves as a personal knowledge base. Yo
 pensieve/
 ├── CLAUDE.md           # This file — your operating instructions
 ├── raw/                # Raw ingested source material
+│   ├── inbox/          # Offline queue (Telegram, email, other integrations)
 │   ├── articles/       # Web articles clipped as markdown
 │   ├── papers/         # PDFs and paper notes
 │   ├── repos/          # Repo snapshots, READMEs, code excerpts
@@ -156,6 +157,10 @@ When the user asks for generated output (reports, comparisons, summaries):
 2. Use descriptive filenames: `output/comparison-x-vs-y.md`
 3. Include wikilinks back to source wiki articles
 4. Offer to "file" valuable outputs back into the wiki as new articles
+
+## Inbox Processing
+
+Use the `/process-inbox` skill to batch-process items from the offline queue. Items captured via Telegram, email, or other integrations accumulate in `raw/inbox/` and are processed through the standard `/ingest` pipeline when you run this skill.
 
 ## Deletion
 

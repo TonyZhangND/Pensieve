@@ -24,7 +24,9 @@ pensieve/
 ├── CLAUDE.md           # System prompt — how Claude operates the vault
 ├── _commands/          # Claude Code skills (visible in Obsidian)
 │   └── ingest.md       # Ingestion pipeline
+├── tools/              # Utilities (Telegram bot, etc.)
 ├── raw/                # Raw ingested source material
+│   ├── inbox/          # Offline queue (Telegram, email, etc.)
 │   ├── articles/       # Web articles as markdown
 │   ├── papers/         # PDFs and paper notes
 │   ├── repos/          # Repo excerpts
@@ -56,6 +58,7 @@ All operations are performed by talking to Claude Code inside the vault director
 - **Ingest content**: `/ingest <url, file path, or pasted text>` — saves the raw source, compiles wiki articles, and updates all indices
 - **Ask questions**: Ask Claude anything about your knowledge base. It reads the indices, pulls up relevant articles, and synthesizes an answer with citations.
 - **Generate output**: Ask Claude to produce reports, comparisons, or summaries. Outputs are saved to `output/` and can be filed back into the wiki.
+- **Offline queue**: Capture content on the go via Telegram (with more integrations like email coming). Items queue in `raw/inbox/` and are batch-ingested when you run `/process-inbox`. See [tools/README.md](tools/README.md) for setup.
 - **Health check**: `/healthcheck` — finds orphaned articles, broken wikilinks, missing summaries, tag inconsistencies, and suggests new connections. Use `/healthcheck --fix` to auto-resolve issues.
 - **Browse**: Open the vault in Obsidian to explore the wiki visually, follow wikilinks, and use the graph view to see concept relationships.
 
